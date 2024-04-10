@@ -51,7 +51,7 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: ExportedArmTemplate
-        path: /ADFRoot/build
+        path: build
     - run: zip -r build.zip build/
     - uses: ncipollo/release-action@v1
       with:

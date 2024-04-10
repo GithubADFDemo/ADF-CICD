@@ -54,7 +54,7 @@ jobs:
       with:
         name: ExportedArmTemplate
         path: build
-    - run: zip -r build.zip build/
-    - uses: ncipollo/release-action@v1
-      with:
-         artifacts: "ExportedArmTemplate"
+    - run: ls -R build/
+    # - uses: ncipollo/release-action@v1
+    #   with:
+    #      artifacts: "ExportedArmTemplate"

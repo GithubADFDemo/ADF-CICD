@@ -1,7 +1,7 @@
 on:
   push:
-    branches:
-    - 'feature/*'
+    # branches:
+    # - 'feature/*'
     tags:
       - '*'
   workflow_dispatch:

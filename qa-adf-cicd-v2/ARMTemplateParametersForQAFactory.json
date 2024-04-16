@@ -6,7 +6,7 @@
 			"value": "qa-adf-cicd-v2"
 		},
 		"ADF_ADLS_GEN2_properties_typeProperties_url": {
-			"value": "https://csg100320009c814a38.dfs.core.windows.net/"
+			"value": "https://csg100320009c.dfs.core.windows.net/"
 		}
 	}
 }

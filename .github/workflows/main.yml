@@ -14,7 +14,7 @@ permissions:
       id-token: write
       contents: read
 env:
-  ARM_Template_Parameters_Stage: "https://raw.githubusercontent.com/GithubADFDemo/ADF-CICD/adf_publish/qa-adf-cicd-v2/ARMTemplateParametersForQAFactory.json"
+  ARM_Template_Parameters_Stage: https://raw.githubusercontent.com/GithubADFDemo/ADF-CICD/adf_publish/qa-adf-cicd-v2/ARMTemplateParametersForQAFactory.json
 
 jobs:
   build:
@@ -93,5 +93,5 @@ jobs:
           resourceGroupName: 'dev-rg' # (6) your target ADF resource group name
           dataFactoryName: 'qa-adf-cicd-v2'# (7) your target ADF name
           armTemplateFile: 'ARMTemplateForFactory.json' # (8) ARM template file name ARMTemplateForFactory.json
-          armTemplateParametersFile: $ARM_Template_Parameters_Stage # (9) ARM template parameters file name ARMTemplateParametersForFactory.json
+          armTemplateParametersFile: ${{env.ARM_Template_Parameters_Stage}} # (9) ARM template parameters file name ARMTemplateParametersForFactory.json
           # additionalParameters: #

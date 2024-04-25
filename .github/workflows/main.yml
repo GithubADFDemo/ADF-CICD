@@ -56,42 +56,42 @@ jobs:
     #   with:
     #     name: ExportedArmTemplate
     #     path: build
-    - run: ls -R ExportedArmTemplate
-    - run: cat ARMTemplateForFactory.json
-    - run: cat ARMTemplateParametersForFactory.json
+    # - run: ls -R ExportedArmTemplate
+    # - run: cat ARMTemplateForFactory.json
+    # - run: cat ARMTemplateParametersForFactory.json
     # - uses: ncipollo/release-action@v1
     #   with:
     #      artifacts: "ExportedArmTemplate"
- #  release:
- #    needs: build
- #    runs-on: ubuntu-latest
- #    steps:
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
     
- # # we 1st download the previously uploaded artifact so we can leverage it later in the release job     
- #      - name: Download a Build Artifact
- #        uses: actions/download-artifact@v3.0.2
- #        with:
- #          name: ExportedArmTemplate # (5) Artifact name 
+ # we 1st download the previously uploaded artifact so we can leverage it later in the release job     
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: ExportedArmTemplate # (5) Artifact name 
 
- #      - name: Login via Az module
- #        uses: azure/login@v1
- #        with:
- #          creds: '{"clientId":"${{ secrets.AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_TENANT_ID }}"}'
- #          enable-AzPSSession: true 
+      - name: Login via Az module
+        uses: azure/login@v1
+        with:
+          creds: '{"clientId":"${{ secrets.AZURE_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_TENANT_ID }}"}'
+          enable-AzPSSession: true 
           
- #      # - name: Login via Az module
- #      #   uses: azure/login@v1
- #      #   with:
- #      #     client-id: ${{ secrets.AZURE_CLIENT_ID }}
- #      #     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
- #      #     subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
- #      #     enable-AzPSSession: true 
+      # - name: Login via Az module
+      #   uses: azure/login@v1
+      #   with:
+      #     client-id: ${{ secrets.AZURE_CLIENT_ID }}
+      #     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+      #     subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      #     enable-AzPSSession: true 
 
- #      - name: data-factory-deploy
- #        uses: Azure/data-factory-deploy-action@v1.2.0
- #        with:
- #          resourceGroupName: 'dev-rg' # (6) your target ADF resource group name
- #          dataFactoryName: 'qa-adf-cicd-v2'# (7) your target ADF name
- #          armTemplateFile: 'ARMTemplateForFactory.json' # (8) ARM template file name ARMTemplateForFactory.json
- #          armTemplateParametersFile: ${{env.ARM_Template_Parameters_Stage}} # (9) ARM template parameters file name ARMTemplateParametersForFactory.json
- #          # additionalParameters: #
+      - name: data-factory-deploy
+        uses: Azure/data-factory-deploy-action@v1.2.0
+        with:
+          resourceGroupName: 'dev-rg' # (6) your target ADF resource group name
+          dataFactoryName: 'qa-adf-cicd-v2'# (7) your target ADF name
+          armTemplateFile: 'ARMTemplateForFactory.json' # (8) ARM template file name ARMTemplateForFactory.json
+          armTemplateParametersFile: ${{env.ARM_Template_Parameters_Stage}} # (9) ARM template parameters file name ARMTemplateParametersForFactory.json
+          # additionalParameters: #

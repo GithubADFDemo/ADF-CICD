@@ -56,9 +56,9 @@ jobs:
     #   with:
     #     name: ExportedArmTemplate
     #     path: build
-    - run: ls -R build/
-    - run: cat build/ARMTemplateForFactory.json
-    - run: cat build/ARMTemplateParametersForFactory.json
+    - run: ls -R ExportedArmTemplate
+    - run: cat ARMTemplateForFactory.json
+    - run: cat ARMTemplateParametersForFactory.json
     # - uses: ncipollo/release-action@v1
     #   with:
     #      artifacts: "ExportedArmTemplate"

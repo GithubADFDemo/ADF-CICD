@@ -77,8 +77,8 @@ jobs:
         with:
           ref: 'adf_publish'  
 
-      - name: Install Powershell
-        run: sh powershell.sh  
+      # - name: Install Powershell
+      #   run: sh powershell.sh  
         
       - name: Login via Az module
         uses: azure/login@v1

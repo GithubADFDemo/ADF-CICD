@@ -91,7 +91,7 @@ jobs:
         with:
           name: ExportedArmTemplate # (5) Artifact name 
 
-      - run: ls
+      - run: ls && cat qa-adf-cicd-v2/ARMTemplateParametersForQAFactory.json && cat ARMTemplateForFactory.json && cat ARMTemplateParametersForFactory.json && cat dev-adf-cicd-v2_GlobalParameters.json
       
  #      - name: data-factory-deploy
  #        uses: Azure/data-factory-deploy-action@v1.2.0

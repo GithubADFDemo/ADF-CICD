@@ -56,7 +56,7 @@ jobs:
         # path: ${{github.workspace}}/ADFRoot/build/ExportedArmTemplate
     - uses: actions/download-artifact@v3
       with:
-        name: ExportedArmTemplate
+        name: build
         path: build
     - run: ls -R build
     - run: cat build/ARMTemplateForFactory.json

@@ -19,6 +19,10 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
+							"maxConcurrentConnections": {
+								"value": "@pipeline().globalParameters.concurrent_value",
+								"type": "Expression"
+							},
 							"recursive": true,
 							"enablePartitionDiscovery": false
 						},

@@ -15,6 +15,7 @@ permissions:
       contents: read
 env:
   ARM_Template_Parameters_Stage: https://raw.githubusercontent.com/GithubADFDemo/ADF-CICD/adf_publish/qa-adf-cicd-v2/ARMTemplateParametersForQAFactory.json
+  PrePostDeploymentScript: https://raw.githubusercontent.com/GithubADFDemo/ADF-CICD/adf_publish/scripts%20/PrePostDeploymentScript.ps1
 
 jobs:
   build:
@@ -98,7 +99,7 @@ jobs:
 
       - run: ls && cat qa-adf-cicd-v2/ARMTemplateParametersForQAFactory.json && cat ARMTemplateForFactory.json && cat ARMTemplateParametersForFactory.json && cat dev-adf-cicd-v2_GlobalParameters.json
       - name: Run Pre-deployment script
-        run: ./scripts/PrePostDeploymentScript.ps1 `
+        run: ${{env.PrePostDeploymentScript}} `
             -armTemplate 'ARMTemplateForFactory.json' `
             -ResourceGroupName 'dev-rg' `
             -DataFactoryName 'qa-adf-cicd-v2' `
@@ -111,10 +112,10 @@ jobs:
         with:
           resourceGroupName: 'dev-rg'
           template: 'ARMTemplateForFactory.json'
-          parameters: './qa-adf-cicd-v2/ARMTemplateParametersForQAFactory.json'
+          parameters: '${{env.ARM_Template_Parameters_Stage}}'
 
       - name: Run Post-deployment script
-        run: ./scripts/PrePostDeploymentScript.ps1 `
+        run: ${{env.PrePostDeploymentScript}} `
             -armTemplate 'ARMTemplateForFactory.json' `
             -ResourceGroupName 'dev-rg' `
             -DataFactoryName 'qa-adf-cicd-v2' `

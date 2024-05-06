@@ -80,10 +80,10 @@ jobs:
 #       - name: Install Powershell
 #         run: sh scripts/powershell.sh     
         
-# # Install Azure Powershell Module
-#       - name: Install Azure PowerShell module
-#         run: Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force 
-#         shell: pwsh
+# Install Azure Powershell Module
+      - name: Install Azure PowerShell module
+        run: Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force 
+        shell: pwsh
         
       - name: Login via Az module
         uses: azure/login@v1

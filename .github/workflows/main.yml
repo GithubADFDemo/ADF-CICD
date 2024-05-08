@@ -99,7 +99,7 @@ jobs:
 
       # - run: ls && cat qa-adf-cicd-v2/ARMTemplateParametersForQAFactory.json && cat ARMTemplateForFactory.json && cat ARMTemplateParametersForFactory.json && cat dev-adf-cicd-v2_GlobalParameters.json
       - name: Run Pre-deployment script
-        run: ./scripts/PrePostDeploymentScript.ps1 `
+        run: ./scripts /PrePostDeploymentScript.ps1 `
             -armTemplate 'ARMTemplateForFactory.json' `
             -ResourceGroupName 'dev-rg' `
             -DataFactoryName 'qa-adf-cicd-v2' `
@@ -115,7 +115,7 @@ jobs:
           parameters: './qa-adf-cicd-v2/ARMTemplateParametersForQAFactory.json'
 
       - name: Run Post-deployment script
-        run: ./scripts/PrePostDeploymentScript.ps1 `
+        run: ./scripts /PrePostDeploymentScript.ps1 `
             -armTemplate 'ARMTemplateForFactory.json' `
             -ResourceGroupName 'dev-rg' `
             -DataFactoryName 'qa-adf-cicd-v2' `

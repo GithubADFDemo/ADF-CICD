@@ -97,9 +97,9 @@ jobs:
         with:
           name: ExportedArmTemplate # (5) Artifact name 
 
-      - run: ls && cat qa-adf-cicd-v2/ARMTemplateParametersForQAFactory.json && cat ARMTemplateForFactory.json && cat ARMTemplateParametersForFactory.json && cat dev-adf-cicd-v2_GlobalParameters.json
+      # - run: ls && cat qa-adf-cicd-v2/ARMTemplateParametersForQAFactory.json && cat ARMTemplateForFactory.json && cat ARMTemplateParametersForFactory.json && cat dev-adf-cicd-v2_GlobalParameters.json
       - name: Run Pre-deployment script
-        run: ${{env.PrePostDeploymentScript}} `
+        run: ./scripts/PrePostDeploymentScript.ps1 `
             -armTemplate 'ARMTemplateForFactory.json' `
             -ResourceGroupName 'dev-rg' `
             -DataFactoryName 'qa-adf-cicd-v2' `
@@ -115,7 +115,7 @@ jobs:
           parameters: '${{env.ARM_Template_Parameters_Stage}}'
 
       - name: Run Post-deployment script
-        run: ${{env.PrePostDeploymentScript}} `
+        run: ./scripts/PrePostDeploymentScript.ps1 `
             -armTemplate 'ARMTemplateForFactory.json' `
             -ResourceGroupName 'dev-rg' `
             -DataFactoryName 'qa-adf-cicd-v2' `

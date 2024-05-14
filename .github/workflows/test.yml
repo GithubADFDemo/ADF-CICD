@@ -28,7 +28,7 @@ jobs:
         # ref: 'ADF_Development'
 
     - name: Display Release Branch Name
-      run: echo "${{ github.event.inputs.releaseBranchName }}"
+      run: ${{ github.event.inputs.releaseBranchName }}
     # - name: Create Pull Request
     #   id: create_pr
     #   uses: peter-evans/create-pull-request@v3
